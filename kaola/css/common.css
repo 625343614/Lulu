@@ -1,0 +1,47 @@
+@charset "utf-8";
+/*css reset**/
+*{
+	box-sizing: border-box;
+}
+body{
+	position: relative;
+	margin:0;
+	font-family: "Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB",微软雅黑,tahoma,simsun,宋体;
+	font-size: 12px;
+	line-height: 24px;
+	color: #333;
+}
+ul,li.dl,ol,h1,h2,h3,h4,h5,h6,p,div,dl,dd,dt{
+	margin:0;
+	padding:0;
+}
+ul,ol,dl{list-style: none;}
+a{
+	color: #333;
+	text-decoration: none;
+}
+a:hover{
+	color: #e31436;
+	text-decoration: none;
+	cursor: pointer;
+}
+.cleatfloat:after{
+	content: ".";
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clearfloat{zoom:1;}
+.lf{float: left;}
+.rt{float: right;}
+.container{
+	width: 1090px;
+	margin:0 auto;
+}
+input{
+	outline:0;
+	border:none;
+}
+img{
+	vertical-align: bottom;
+}

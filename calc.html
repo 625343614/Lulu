@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> 我的第一个网页 </title>
+  <meta charset="utf-8"/>
+  <style type="text/css">
+  .{font-size: 20px}
+  .btns{width:400px;}
+  .display{width:340px;height:30px;margin-left:5px;font-weight: 500}
+  button{display:block;float:left;width:80px;height:50px;margin:5px;}
+  .info{float: left;color: red}
+  </style>
+ </head>
+
+ <body>
+  <h1>计算器</h1>
+  <div class="calc">
+    <input type="text" value="" class="display" readonly>
+    <div class="btns">
+      <button>AC</button>
+      <button>&lt;-</button>
+      <button>/</button>
+      <button>*</button>
+
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button>-</button>
+
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>+</button>
+
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>&nbsp;</button>
+
+      <button>%</button>
+      <button>0</button>
+      <button>.</button>
+      <button>=</button>
+
+      <div class="info">AC:清空；&lt;-:删除；</div>
+    </div>
+   
+  </div>
+
+
+  <script src="js/jquery-1.11.3.js"></script>
+  <script>
+    //修改input的样式
+    $('button')[0].style.color = 'orange';
+    $('button:last').css('background','orange');
+  
+    //jQuery中所有的函数都自带循环功能
+    var calc;
+    var isCalc = false;//控制输入框内容，如果按了“=”,再进行输入数字的时候清空输入框
+    $('button').click(function(){
+      //console.log(this); //DOM对象
+      var newValue = this.innerHTML;
+      //console.log(newValue);
+      var oldValue = $('input').val();
+
+      if(newValue == 'AC'){//清空
+        $('input').val('');  
+
+      }else if(newValue == '&lt;-'){//删一个字符
+        oldValue = oldValue.substr(0,oldValue.length-1);
+        $('input').val(oldValue);
+
+      }else if(newValue == '/' || newValue == '*' || newValue == '-' || newValue == '+' || newValue == '%'){
+        calc = newValue;
+        $('input').val( oldValue+newValue ); 
+      }else if(newValue == '='){
+        var result = eval(oldValue);
+        $('input').val( oldValue+newValue+result ); 
+        isCalc = true;
+      }else if(newValue == "&nbsp;"){
+
+      }else{
+        if(isCalc){
+          oldValue = '';
+          $('input').val('');//清空输入框
+          $('input').val( newValue ); 
+          isCalc = false;//改为false，下次就不需要清空输入框了
+        }
+        $('input').val( oldValue+newValue );  
+      }
+      
+    });
+  </script>
+ </body>
+</html>

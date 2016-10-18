@@ -1,0 +1,28 @@
+$(function(){
+    //手机考拉海购
+    function overAndOut(select,showHideEle){
+        $(select).mouseover(function(){
+            $(showHideEle).show();
+            $(select).parent().prev().children()[1].style.opacity="0";
+        });
+        $(select).mouseout(function(){
+            $(showHideEle).hide();
+            $(select).parent().prev().children()[1].style.opacity="1";
+        });
+    }
+    overAndOut('.phone_kaola>a','.sjweixin');//手机考拉
+    overAndOut('.li_3>a','.sup_li_3');//个人中心
+    overAndOut('.li_4>a','.sup_li_4'); //客户服务
+    overAndOut('.li_7>a','#sup_li_7'); //更多
+
+    //所有分类
+    $('#sort_box li').on('mouseover',function(){
+        console.log($(this).children()[4]);
+        $(this).children()[4].style.display="block";
+
+    });
+    $('#sort_box li').on('mouseout',function(){
+       // $(this).children()[4].hide();
+	   $(this).children()[4].style.display="block";
+    });
+})
